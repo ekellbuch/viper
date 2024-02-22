@@ -16,7 +16,6 @@ import torchvision
 import warnings
 from PIL import Image
 from collections import Counter
-from contextlib import redirect_stdout
 from functools import partial
 from itertools import chain
 from joblib import Memory
@@ -1045,7 +1044,7 @@ class BLIPModel(BaseModel):
         super().__init__(gpu_number)
 
         # from lavis.models import load_model_and_preprocess
-        from transformers import BlipProcessor, BlipForConditionalGeneration, Blip2Processor, \
+        from transformers import Blip2Processor, \
             Blip2ForConditionalGeneration
 
         # https://huggingface.co/models?sort=downloads&search=Salesforce%2Fblip2-

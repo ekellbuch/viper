@@ -10,8 +10,6 @@ import traceback
 import pandas as pd
 import torch.multiprocessing as mp
 from joblib import Memory
-from num2words import num2words
-import numpy as np
 from omegaconf import OmegaConf
 from rich.console import Console
 from torch.utils.data import DataLoader
@@ -202,6 +200,7 @@ def main():
                 all_img_paths += [dataset.get_sample_path(idx) for idx in batch['index']]
                 if i % config.log_every == 0:
                     try:
+                        import pdb; pdb.set_trace()
                         accuracy = datasets.accuracy(all_results, all_answers, all_possible_answers, all_query_types)
                         console.print(f'Accuracy at Batch {i}/{n_batches}: {accuracy}')
                     except Exception as e:
@@ -214,6 +213,7 @@ def main():
             console.print("Completing logging and exiting...")
 
     try:
+        import pdb; pdb.set_trace()
         accuracy = datasets.accuracy(all_results, all_answers, all_possible_answers, all_query_types)
         console.print(f'Final accuracy: {accuracy}')
     except Exception as e:

@@ -1,38 +1,28 @@
 # General imports and variables, as well as config
 import ast
-import math
-import sys
 import time
 
 import requests
 import torch.multiprocessing as mp
 from joblib import Memory
-from rich.console import Console
 from rich.live import Live
 from rich.padding import Padding
-from rich.pretty import pprint
-from rich.prompt import Prompt
 from rich.syntax import Syntax
 from rich import print
 from rich.markup import escape as rich_escape
 
-from IPython.display import update_display, clear_output, display
-from PIL import Image
+from IPython.display import display
 import matplotlib.pyplot as plt
 
 from configs import config
-from utils import show_single_image
 
-from IPython.display import update_display, clear_output
 from IPython.core.display import HTML
 
 cache = Memory('cache/' if config.use_cache else None, verbose=0)
 
 mp.set_start_method('spawn', force=True)
-from vision_processes import forward, finish_all_consumers  # This import loads all the models. May take a while
 from image_patch import *
 from video_segment import *
-from datasets.dataset import MyDataset
 
 console = Console(highlight=False, force_terminal=False)
 
